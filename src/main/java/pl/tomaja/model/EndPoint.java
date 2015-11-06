@@ -1,7 +1,5 @@
 package pl.tomaja.model;
 
-import pl.tomaja.service.LogService;
-
 /**
  * @author Adam Tomaja
  */

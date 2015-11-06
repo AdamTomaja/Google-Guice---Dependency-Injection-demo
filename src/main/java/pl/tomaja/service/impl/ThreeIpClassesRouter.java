@@ -1,7 +1,8 @@
 package pl.tomaja.service.impl;
 
+import javax.inject.Inject;
+
 import com.google.common.base.Optional;
-import com.google.inject.Inject;
 
 import pl.tomaja.model.EndPoint;
 import pl.tomaja.service.DatabaseService;
@@ -19,28 +20,20 @@ public class ThreeIpClassesRouter implements RouterService {
 
 	private static final int FIRST_CLASS_RANGE = 100;
 
+	@Inject
 	private DatabaseService class1Db;
 
+	@Inject
 	private DatabaseService class2Db;
 
+	@Inject
 	private DatabaseService class3Db;
 
-	private ExampleDataService exampleDataService;
-
+	@Inject
 	private LogService logService;
 
 	@Inject
-	public ThreeIpClassesRouter(DatabaseService class1Db, DatabaseService class2Db, DatabaseService class3Db,
-			ExampleDataService exampleDataService, LogService logService) {
-		this.class1Db = class1Db;
-		this.class2Db = class2Db;
-		this.class3Db = class3Db;
-		this.exampleDataService = exampleDataService;
-		this.logService = logService;
-		init();
-	}
-
-	private void init() {
+	private void init(ExampleDataService exampleDataService) {
 		for (EndPoint endPoint : exampleDataService.getExampleData()) {
 			int ip = endPoint.getIp();
 			try {
