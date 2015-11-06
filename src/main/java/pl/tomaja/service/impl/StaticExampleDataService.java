@@ -14,10 +14,9 @@ import pl.tomaja.service.ExampleDataService;
 @Singleton
 public class StaticExampleDataService implements ExampleDataService {
 
-	@Override
-	public List<EndPoint> getExampleData() {
-		List<EndPoint> data = new ArrayList<>();
-		
+	private final List<EndPoint> data = new ArrayList<>();
+	
+	public StaticExampleDataService() {
 		data.add(new EndPoint(10, "Endpoint 10 Google"));
 		data.add(new EndPoint(25, "Endpoint 25 Microsoft"));
 		data.add(new EndPoint(150, "Endpoint 150 Twitter"));
@@ -26,7 +25,10 @@ public class StaticExampleDataService implements ExampleDataService {
 		data.add(new EndPoint(600, "Endpoint 600 Oracle"));
 		data.add(new EndPoint(1000, "Endpoint 1000 HackADay"));
 		data.add(new EndPoint(1200, "Endpoint 1200 Kickstarter"));
-		
+	}
+	
+	@Override
+	public List<EndPoint> getExampleData() {		
 		return data;
 	}
 
